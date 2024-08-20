@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- <link rel="stylesheet" href="/calculator.css"> -->
+</head>
+<body>
+    <STYle>
+        *{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(179, 38, 148) ;
+    color: white;
+    /* position: relative; */
+}
+.heading{
+    position: absolute;
+    top: 250px;
+    left: 250px;
+    text-align: center;
+}
+
+.main-containor{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    text-align: center;
+    background-color: #3a4452;
+    height: 320px;
+    width: 220px;
+}
+
+.answer{
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 5px;
+}
+form .answer input{
+     text-align: right;
+     flex: 1;
+     box-shadow: none;
+    font-size: 25px;
+    width: 190px;
+    justify-content: right;
+    padding-right: 5px;
+}
+
+.btn{
+    height: 40px;
+    width: 40px;
+    border-radius:10px ;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 17px;
+    box-shadow: none;
+    border: 0px;
+    outline: 0px;
+    box-shadow: -2px -2px 8px rgb(255, 255, 138),5px 5px 15px rgba(0,0,0,0.2);
+    background: transparent;
+    color: #fff;
+    
+
+}
+
+#equle{
+    width: 90px;
+}
+
+
+
+
+
+
+    </STYle>
+    <div class="heading">
+        <h1>Calculator</h1>
+        <p>Using HTML,CSS,javascript</p>
+
+
+    </div>
+    
+    <div class="main-containor" style="border-radius: 10px;">
+     <form>
+        <div class="answer">
+            <input type="text" class="btn" name="display" value="">
+        </div>
+
+        <div class="firstROw">
+            <input class="btn" id="ac" type="button" value="AC" onclick="display.value = '' " >
+            <input class="btn" id="de" type="button" value="DE" onclick=" display.value= display.value.toString().slice(0,-1)">
+            <input class="btn" id="dot" type="button" value="." onclick="display.value += '.' ">
+            <input class="btn" id="divide" type="button" value="/" onclick="display.value += '/' ">
+        </div>
+        <div class="secondRow">
+            <input class="btn" id="seven" type="button" value="7" onclick="display.value += '7' ">
+            <input class="btn" id="eight" type="button" value="8" onclick="display.value += '8' ">
+            <input class="btn" id="nine" type="button" value="9" onclick="display.value += '9' ">
+            <input class="btn" id="multiply" type="button" value="x" onclick="display.value += '*' ">
+        </div>
+        <div class="thirdRow">
+            <input class="btn" id="four" type="button" value="4" onclick="display.value += '4' ">
+            <input class="btn" id="five" type="button" value="5" onclick="display.value += '5' ">
+            <input class="btn" id="six" type="button" value="6" onclick="display.value += '6' ">
+            <input class="btn" id="subtract" type="button" value="-" onclick="display.value += '-' ">
+        </div>
+        <div class="fourthRow">
+            <input class="btn" id="one" type="button" value="1" onclick="display.value += '1' ">
+            <input class="btn" id="two" type="button" value="2" onclick="display.value += '2' ">
+            <input class="btn" id="three" type="button" value="3" onclick="display.value += '3' ">
+            <input class="btn" id="add" type="button" value="+" onclick="display.value += '+' ">
+        </div>
+        <div class="FifthRow">
+            <input class="btn" id="zeroZero" type="button" value="00" onclick="display.value += '00' ">
+            <input class="btn" id="zero" type="button" value="0" onclick="display.value += '0' ">
+            <input class="btn" id="equle" type="button" value="=" onclick=" display.value = eval(display.value) ">
+        </div>
+     </form>
+
+    </div>
+
+<!-- javascript link -->
+<script src="/calculator.js"></script>
+
+</body>
+</html>
