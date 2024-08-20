@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar h1 {
+            color: #fff;
+            margin: 0;
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            padding: 8px 12px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .gallery-container {
+            width: 60%;
+            max-width: 800px;
+            margin: 60px auto;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+            background-color: #fff;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            max-height: 400px;
+            display: block;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            top: -40px;
+        }
+
+        .navigation button {
+            background-color: rgba(57, 89, 233, 0.397);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .navigation button:hover {
+            background-color: rgba(57, 89, 233, 0.767);
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .thumbnails img {
+            width: 80px;
+            height: 60px;
+            margin: 5px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .thumbnails img:hover {
+            opacity: 1;
+        }
+
+        .active-thumbnail {
+            opacity: 1;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Image Gallery</h1>
+    <ul>
+        <li><a href="#signup">Signup</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+
+<div class="gallery-container" id="gallery">
+    <div class="gallery">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.48 AM.jpeg" alt="Image 1">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.48 AM (1).jpeg" alt="Image 2">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.45 AM.jpeg" alt="Image 3">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.43 AM.jpeg" alt="Image 4">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.42 AM.jpeg " alt="Image 5">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.42 AM (1).jpeg " alt="Image 6">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.41 AM.jpeg " alt="Image 7">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.33 AM.jpeg " alt="Image 8">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.38 AM.jpeg " alt="Image 9">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.35 AM.jpeg " alt="Image 10">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.34 AM.jpeg " alt="Image 11">
+        <img src="/Task_1/Image/WhatsApp Image 2024-08-17 at 11.03.41 AM.jpeg " alt="Image 12">
+    </div>
+    <div class="navigation">
+        <button id="prevBtn">Prev</button>
+        <button id="nextBtn">Next</button>
+    </div>
+    <div class="thumbnails">
+        <img src="/Task_1/Image/Thumbnail_1.webp" alt="Thumbnail 1" class="thumbnail active-thumbnail" data-index="0">
+        <img src="/Task_1/Image/Thumbnail_2.jfif" alt="Thumbnail 2" class="thumbnail" data-index="1">
+        <img src="/Task_1/Image/Thumbnail_3.jfif" alt="Thumbnail 3" class="thumbnail" data-index="2">
+        <img src="/Task_1/Image/Thumbnail_4.jfif" alt="Thumbnail 4" class="thumbnail" data-index="3">
+        <img src="/Task_1/Image/Thumbnail_5.jfif" alt="Thumbnail 5" class="thumbnail" data-index="4">
+    </div>
+</div>
+
+<script>
+    const gallery = document.querySelector('.gallery');
+    const images = document.querySelectorAll('.gallery img');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    function updateGallery(index) {
+        gallery.style.transform = `translateX(-${index * 100}%)`;
+        thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+        thumbnails[index].classList.add('active-thumbnail');
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+        updateGallery(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+        updateGallery(currentIndex);
+    });
+
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            currentIndex = parseInt(thumb.dataset.index);
+            updateGallery(currentIndex);
+        });
+    });
+
+    updateGallery(currentIndex);
+</script>
+
+</body>
+</html>
